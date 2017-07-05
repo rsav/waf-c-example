@@ -1,0 +1,23 @@
+# dear emacs, this is -*- python -*-
+
+## stdlib imports
+
+## waf imports
+import waflib.Logs as msg
+
+def configure(ctx):
+    msg.info("configure [app]...")
+    ctx.load('compiler_c')
+    return
+
+def build(ctx):
+    msg.info("build [app]...")
+    ctx(
+        features = 'c cprogram',
+        source = 'src/app.c',
+        target = 'app',
+        use = ['liba', 'libb'],
+        )
+    return
+
+## EOF

@@ -1,0 +1,24 @@
+# dear emacs, this is -*- python -*-
+
+## stdlib imports
+
+## waf imports
+import waflib.Logs as msg
+
+def configure(ctx):
+    msg.info("configure [liba]...")
+    ctx.load('compiler_c')
+    return
+
+def build(ctx):
+    msg.info("build [liba]...")
+    ctx(
+        features = 'c cshlib',
+        source = 'src/liba.c',
+        target = 'liba',
+        includes = 'inc',
+        export_includes = 'inc',
+        )
+    return
+
+## EOF
